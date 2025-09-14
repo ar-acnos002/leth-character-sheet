@@ -28,7 +28,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.set_page_config(page_title="DBD&D Character Sheet", page_icon="⚔️", layout="wide")
+st.set_page_config(page_title="Xharis•DBD&D Character Sheet", page_icon="⚔️", layout="wide")
 
 
 # --- Shared global state (persistent across sessions) ---
