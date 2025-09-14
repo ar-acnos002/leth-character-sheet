@@ -38,25 +38,25 @@ def get_global_state():
         "roll_counter": 0,
         "latest_roll": "No rolls yet.",
         "meta": {
-            "Size": "Basic",
-            "Build": "Light",
-            "Level": "2",
+            "Size": "",
+            "Build": "",
+            "Level": "",
         },
         "stats": {
-            "Might": 1,
-            "Precision": 1,
-            "Agility": 2,
-            "Endurance": 1,
-            "Immunity": 1,
-            "Intellect": 1,
-            "Focus": 1,
-            "Insight": 1,
-            "Influence": 1,
+            "Might": 0,
+            "Precision": 0,
+            "Agility": 0,
+            "Endurance": 0,
+            "Immunity": 0,
+            "Intellect": 0,
+            "Focus": 0,
+            "Insight": 0,
+            "Influence": 0,
             "Power": 0,
-            "Command": 2,
-            "Talent": 2,
-            "Talent Description": "Tinkering",
-            "Vulnerability": "Magic Damage +1",
+            "Command": 0,
+            "Talent": 0,
+            "Talent Description": "",
+            "Vulnerability": "",
             "Resistance": "",
             "Feature": "",
         },
@@ -117,7 +117,7 @@ st.markdown(
 )
 
 # --- Character metadata fields ---
-st.subheader("Xharis Paridion")
+st.subheader("Character Name")
 
 meta_cols = st.columns(3)
 with meta_cols[0]:
