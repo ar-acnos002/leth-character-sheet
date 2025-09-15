@@ -28,7 +28,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.set_page_config(page_title="Xharis•DBD&D Character Sheet", page_icon="⚔️", layout="wide")
+st.set_page_config(
+    page_title="Vaelor•DBD&D Character Sheet", page_icon="⚔️", layout="wide"
+)
 
 
 # --- Shared global state (persistent across sessions) ---
@@ -39,24 +41,24 @@ def get_global_state():
         "latest_roll": "No rolls yet.",
         "meta": {
             "Size": "Basic",
-            "Build": "Light",
+            "Build": "Heavy",
             "Level": "2",
         },
         "stats": {
-            "Might": 1,
+            "Might": 2,
             "Precision": 1,
-            "Agility": 2,
+            "Agility": 1,
             "Endurance": 1,
             "Immunity": 1,
             "Intellect": 1,
             "Focus": 1,
             "Insight": 1,
             "Influence": 1,
-            "Power": 0,
-            "Command": 2,
+            "Power": 1,
+            "Command": 1,
             "Talent": 2,
-            "Talent Description": "Tinkering",
-            "Vulnerability": "Magic Damage +1",
+            "Talent Description": "Dark Magic",
+            "Vulnerability": "Psychic Magic Vulnerability -1",
             "Resistance": "",
             "Feature": "",
         },
@@ -117,7 +119,7 @@ st.markdown(
 )
 
 # --- Character metadata fields ---
-st.subheader("Xharis Paridion")
+st.subheader("Vaelor Grimvier")
 
 meta_cols = st.columns(3)
 with meta_cols[0]:
