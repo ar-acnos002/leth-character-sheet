@@ -29,7 +29,7 @@ st.markdown(
 )
 
 st.set_page_config(
-    page_title="Jetta•DBD&D Character Sheet", page_icon="⚔️", layout="wide"
+    page_title="Glenwarden•DBD&D Character Sheet", page_icon="⚔️", layout="wide"
 )
 
 
@@ -40,26 +40,26 @@ def get_global_state():
         "roll_counter": 0,
         "latest_roll": "No rolls yet.",
         "meta": {
-            "Size": "Basic",
+            "Size": "Large",
             "Build": "Heavy",
-            "Level": "2",
+            "Level": "6",
         },
         "stats": {
-            "Might": 1,
-            "Precision": 2,
-            "Agility": 1,
+            "Might": 3,
+            "Precision": 0,
+            "Agility": 0,
             "Endurance": 1,
             "Immunity": 1,
-            "Intellect": 2,
+            "Intellect": 1,
             "Focus": 1,
-            "Insight": 1,
-            "Influence": 1,
-            "Power": 0,
-            "Command": 0,
-            "Talent": 2,
-            "Talent Description": "Silent Flight",
-            "Vulnerability": "",
-            "Resistance": "",
+            "Insight": 2,
+            "Influence": 2,
+            "Power": 3,
+            "Command": 2,
+            "Talent": 3,
+            "Talent Description": "Nature's Ward",
+            "Vulnerability": "Dark Magic -1 rolls",
+            "Resistance": "Nature Resistance +1 rolls -2 damage",
             "Feature": "",
         },
     }
@@ -119,7 +119,7 @@ st.markdown(
 )
 
 # --- Character metadata fields ---
-st.subheader("Jetta Yu")
+st.subheader("The Glenwarden")
 
 meta_cols = st.columns(3)
 with meta_cols[0]:
@@ -191,6 +191,15 @@ for i, stat in enumerate(stat_names):
                 label_visibility="collapsed",
             )
             state["stats"][stat] = new_val
+
+# --- Weapons/Spells ---
+st.text_area(
+    "Weapons/Spells",
+    value="""earth impact---5---2
+vine grasp---=---2
+heartwood bastion---=---2
+season's end---5---2""",
+)
 
 # --- Latest roll field ---
 st.text_area("Latest Roll", value=state["latest_roll"], height=50, disabled=True)
