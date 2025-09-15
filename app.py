@@ -29,7 +29,7 @@ st.markdown(
 )
 
 st.set_page_config(
-    page_title="Glenwarden•DBD&D Character Sheet", page_icon="⚔️", layout="wide"
+    page_title="Calathor•DBD&D Character Sheet", page_icon="⚔️", layout="wide"
 )
 
 
@@ -40,25 +40,25 @@ def get_global_state():
         "roll_counter": 0,
         "latest_roll": "No rolls yet.",
         "meta": {
-            "Size": "Large",
+            "Size": "Huge",
             "Build": "Heavy",
             "Level": "6",
         },
         "stats": {
-            "Might": 3,
-            "Precision": 0,
-            "Agility": 0,
-            "Endurance": 1,
-            "Immunity": 1,
-            "Intellect": 1,
-            "Focus": 1,
+            "Might": 4,
+            "Precision": 1,
+            "Agility": 3,
+            "Endurance": 0,
+            "Immunity": 0,
+            "Intellect": 0,
+            "Focus": 3,
             "Insight": 2,
-            "Influence": 2,
+            "Influence": 0,
             "Power": 3,
-            "Command": 2,
+            "Command": 1,
             "Talent": 3,
-            "Talent Description": "Nature's Ward",
-            "Vulnerability": "Dark Magic -1 rolls",
+            "Talent Description": "Grim Visage",
+            "Vulnerability": "",
             "Resistance": "Nature Resistance +1 rolls -2 damage",
             "Feature": "",
         },
@@ -119,7 +119,7 @@ st.markdown(
 )
 
 # --- Character metadata fields ---
-st.subheader("The Glenwarden")
+st.subheader("Calathor the Grim")
 
 meta_cols = st.columns(3)
 with meta_cols[0]:
@@ -195,10 +195,10 @@ for i, stat in enumerate(stat_names):
 # --- Weapons/Spells ---
 st.text_area(
     "Weapons/Spells",
-    value="""earth impact---5---2
-vine grasp---=---2
-heartwood bastion---=---2
-season's end---5---2""",
+    value="""Dark Claw---7---=
+Breath Fire---9---7
+Blink---=---2
+Vine Grasp---=---2""",
 )
 
 # --- Latest roll field ---
