@@ -29,7 +29,7 @@ st.markdown(
 )
 
 st.set_page_config(
-    page_title="Vaelor•DBD&D Character Sheet", page_icon="⚔️", layout="wide"
+    page_title="Aethos•DBD&D Character Sheet", page_icon="⚔️", layout="wide"
 )
 
 
@@ -41,24 +41,24 @@ def get_global_state():
         "latest_roll": "No rolls yet.",
         "meta": {
             "Size": "Basic",
-            "Build": "Heavy",
+            "Build": "Light",
             "Level": "2",
         },
         "stats": {
-            "Might": 2,
+            "Might": 1,
             "Precision": 1,
             "Agility": 1,
-            "Endurance": 1,
+            "Endurance": 0,
             "Immunity": 1,
             "Intellect": 1,
             "Focus": 1,
             "Insight": 1,
             "Influence": 1,
-            "Power": 1,
+            "Power": 2,
             "Command": 1,
             "Talent": 2,
-            "Talent Description": "Dark Magic",
-            "Vulnerability": "Psychic Magic Vulnerability -1",
+            "Talent Description": "Animal Handling",
+            "Vulnerability": "",
             "Resistance": "",
             "Feature": "",
         },
@@ -119,7 +119,7 @@ st.markdown(
 )
 
 # --- Character metadata fields ---
-st.subheader("Vaelor Grimvier")
+st.subheader("Aethos")
 
 meta_cols = st.columns(3)
 with meta_cols[0]:
