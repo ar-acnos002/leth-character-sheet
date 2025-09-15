@@ -195,10 +195,10 @@ for i, stat in enumerate(stat_names):
 # --- Weapons/Spells ---
 st.text_area(
     "Weapons/Spells",
-    value="""earth impact---5---2
-vine grasp---=---2
-heartwood bastion---=---2
-season's end---5---2""",
+    value="""Earth Impact---5---2
+Vine Grasp---=---2
+Heartwood Bastion---=---2
+Season's End---5---2""",
 )
 
 # --- Latest roll field ---
