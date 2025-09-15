@@ -29,7 +29,7 @@ st.markdown(
 )
 
 st.set_page_config(
-    page_title="Aethos•DBD&D Character Sheet", page_icon="⚔️", layout="wide"
+    page_title="Jetta•DBD&D Character Sheet", page_icon="⚔️", layout="wide"
 )
 
 
@@ -41,23 +41,23 @@ def get_global_state():
         "latest_roll": "No rolls yet.",
         "meta": {
             "Size": "Basic",
-            "Build": "Light",
+            "Build": "Heavy",
             "Level": "2",
         },
         "stats": {
             "Might": 1,
-            "Precision": 1,
+            "Precision": 2,
             "Agility": 1,
-            "Endurance": 0,
+            "Endurance": 1,
             "Immunity": 1,
-            "Intellect": 1,
+            "Intellect": 2,
             "Focus": 1,
             "Insight": 1,
             "Influence": 1,
-            "Power": 2,
-            "Command": 1,
+            "Power": 0,
+            "Command": 0,
             "Talent": 2,
-            "Talent Description": "Animal Handling",
+            "Talent Description": "Silent Flight",
             "Vulnerability": "",
             "Resistance": "",
             "Feature": "",
@@ -119,7 +119,7 @@ st.markdown(
 )
 
 # --- Character metadata fields ---
-st.subheader("Aethos")
+st.subheader("Jetta Yu")
 
 meta_cols = st.columns(3)
 with meta_cols[0]:
