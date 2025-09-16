@@ -70,50 +70,52 @@ state = get_global_state()
 
 # --- Dice helpers ---
 def roll_dice(num_dice: int):
-    return [random.randint(1, 6) for _ in range(num_dice)]
+    rolls = [random.randint(1, 6) for _ in range(num_dice)]
+    total = sum(rolls)
+    return total
 
 
 def interpret_roll(num_dice: int, total: int) -> str:
     if num_dice == 2:
         if total < 6:
-            return "no-and"
+            return "Failure | Regular Save | no-and"
         if total == 6:
-            return "yes-but"
+            return "Success | Disadvantage on Save | yes-but"
         if total == 7:
-            return "yes-and"
+            return "Critical Success | No Save | yes-and"
         if total == 8:
-            return "yes-but"
+            return "Success | Disadvantage on Save | yes-but"
         if total > 8:
-            return "no-but"
+            return "Failure | Regular Save | no-but"
     if num_dice == 4:
         if total < 12:
-            return "no-and"
+            return "Failure | Regular Save | no-and"
         if total in (12, 13):
-            return "yes-but"
+            return "Success | Disadvantage on Save | yes-but"
         if total == 14:
-            return "yes-and"
+            return "Critical Success | No Save | yes-and"
         if total in (15, 16):
-            return "yes-but"
+            return "Success | Disadvantage on Save | yes-but"
         if total > 16:
-            return "no-but"
+            return "Failure | Regular Save | no-but"
     if num_dice == 6:
         if total < 18:
-            return "no-and"
+            return "Failure | Regular Save | no-and"
         if 18 <= total <= 20:
-            return "yes-but"
+            return "Success | Disadvantage on Save | yes-but"
         if total == 21:
-            return "yes-and"
+            return "Critical Success | No Save | yes-and"
         if 22 <= total <= 24:
-            return "yes-but"
+            return "Success | Disadvantage on Save | yes-but"
         if total > 24:
-            return "no-but"
+            return "Failure | Regular Save | no-but"
     return "unknown"
 
 
 # --- UI ---
 st.markdown(
     """
-    <h2 style='text-align: center; margin-top: -105px; font-family: "Gill Sans", sans-serif; font-style: bold;'>DBD&D Character Sheet</h2>
+    <h2 style='text-align: center; margin-top: -105px; font-family: "Gill Sans", sans-serif;'>DBD&D Character Sheet</h2>
     """,
     unsafe_allow_html=True,
 )
@@ -157,23 +159,47 @@ for i, stat in enumerate(stat_names):
             )
         else:
             # Button = label + roller (top)
-            disabled = state["stats"][stat] == 0 or state["stats"][stat] == 4
-            if st.button(stat, key=f"roll_{stat}", disabled=disabled):
-                val = state["stats"][stat]
-                if val == 0:
-                    state["roll_counter"] += 1
-                    state["latest_roll"] = (
-                        f"Roll #{state['roll_counter']} | {stat} | Auto Fail"
-                    )
-                elif val == 4:
-                    state["roll_counter"] += 1
-                    state["latest_roll"] = (
-                        f"Roll #{state['roll_counter']} | {stat} | Mastery (Auto Success)"
-                    )
-                else:
+            b1, b2, b3 = st.columns([2, 1, 1])
+            val = state["stats"][stat]
+            disabled = val == 0 or val == 4
+            with b1:
+                if st.button(
+                    stat,
+                    key=f"roll_{stat}",
+                    disabled=disabled,
+                    use_container_width=True,
+                ):
                     num_dice = val * 2
-                    rolls = roll_dice(num_dice)
-                    total = sum(rolls)
+                    total = roll_dice(num_dice)
+                    outcome = interpret_roll(num_dice, total)
+                    state["roll_counter"] += 1
+                    state["latest_roll"] = (
+                        f"Roll #{state['roll_counter']} | {stat} | {num_dice}d6 = {total} → {outcome}"
+                    )
+
+            with b2:
+                if st.button(
+                    "ADV",
+                    key=f"roll_{stat}_adv",
+                    disabled=(val + 1) >= 4,
+                    use_container_width=True,
+                ):
+                    num_dice = (val + 1) * 2
+                    total = roll_dice(num_dice)
+                    outcome = interpret_roll(num_dice, total)
+                    state["roll_counter"] += 1
+                    state["latest_roll"] = (
+                        f"Roll #{state['roll_counter']} | {stat} | {num_dice}d6 = {total} → {outcome}"
+                    )
+            with b3:
+                if st.button(
+                    "DIS",
+                    key=f"roll_{stat}_dis",
+                    disabled=(val - 1) <= 0,
+                    use_container_width=True,
+                ):
+                    num_dice = (val - 1) * 2
+                    total = roll_dice(num_dice)
                     outcome = interpret_roll(num_dice, total)
                     state["roll_counter"] += 1
                     state["latest_roll"] = (
